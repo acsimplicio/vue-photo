@@ -1,7 +1,9 @@
 <template>
     <div class='image-card'>
-        <div class='image-card-img' :style="{ 'background-image': 'url(' + image.image + ')'  }"></div>
-        <h3 class='image-card-title'>{{ image.title }}</h3>
+        <router-link class='link' :to="{ name: 'view-id', params: { id: image.id} }">
+            <div class='image-card-img' :style="{ 'background-image': 'url(' + image.image + ')'  }"></div>
+            <h3 class='image-card-title'>{{ image.title }}</h3>
+        </router-link>
         <div class="image-card-info">
             <p class='image-card-description'>{{ image.description }}</p>
             <button class='image-card-favbtn' @click="image.favorite = !image.favorite">
@@ -26,6 +28,12 @@ export default {
 </script>
 
 <style scoped>
+
+    .link {
+        color: black;
+        text-decoration: none;
+    }
+
     .image-card {
         padding: 20px;
         background-color: whitesmoke;

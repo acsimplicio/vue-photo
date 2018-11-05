@@ -10,14 +10,15 @@
         <input type="text" placeholder="Pesquise!" v-model="searchbox">
       </div>
       <div class='images-container'>
-          <image-card :image='image' v-for="image in filteredImages" :key="image"></image-card>
+          <image-card :image='image' v-for="image in images" :key="image"></image-card>
       </div>
     </div>
 </template>
 
 <script>
 
-import imageCard from '~/components/image-card.vue'
+import imageCard from '~/components/image-card.vue';
+import AppApi from '~apijs';
 
 export default {
   components: {
@@ -26,28 +27,22 @@ export default {
   data () {
     return {
       searchbox: '',
-      images: [{
-        title: 'Iguana',
-        image: 'https://meusanimais.com.br/wp-content/uploads/2018/01/iguana-como-animal-de-estima%C3%A7%C3%A3o.jpg',
-        description: 'Iguana fofinha que é verde e bonitinha demais.',
-        id: 1,
-        favorite: false
-      }, {
-        title: 'Gato',
-        image: 'http://blogs.correiobraziliense.com.br/maisbichos/wp-content/uploads/sites/7/2018/01/gato-1024x576.jpg',
-        description:'Gato fofinho, muito bonitinho, lindo igual um leãozinho',
-        id: 2,
-        favorite: false
-      }]
+      images: []
     }
   },
-  computed: {
-    filteredImages() {
-      return this.images.filter( image => {
-        return image.title.toLowerCase().includes(this.searchbox.toLowerCase());
-      } )
-    }
-  }
+  mounted () {
+    AppApi.list_images().then(result => {
+      console.log('result: ', result)
+      this.images = result.data
+    })
+  },
+  // computed: {
+  //   filteredImages() {
+  //     return this.images.filter( image => {
+  //       return image.title.toLowerCase().includes(this.searchbox.toLowerCase());
+  //     } )
+  //   }
+  // }
 }
 </script>
 
