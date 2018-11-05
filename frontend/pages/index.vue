@@ -1,11 +1,16 @@
 <template>
     <div class='main-content'>
       <div class='search-bar'>
-        <input type="text" placeholder="Pesquise!">
-        <button>Pesquisar</button>
+        <div class='icon-container'>
+          <svg class='search-icon' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            <path d="M0 0h24v24H0z" fill="none"/>
+          </svg>
+          </div>
+        <input type="text" placeholder="Pesquise!" v-model="searchbox">
       </div>
       <div class='images-container'>
-          <image-card :image='image' v-for="image in images" :key="image"></image-card>
+          <image-card :image='image' v-for="image in filteredImages" :key="image"></image-card>
       </div>
     </div>
 </template>
@@ -20,6 +25,7 @@ export default {
   },
   data () {
     return {
+      searchbox: '',
       images: [{
         title: 'Iguana',
         image: 'https://meusanimais.com.br/wp-content/uploads/2018/01/iguana-como-animal-de-estima%C3%A7%C3%A3o.jpg',
@@ -33,6 +39,13 @@ export default {
         id: 2,
         favorite: false
       }]
+    }
+  },
+  computed: {
+    filteredImages() {
+      return this.images.filter( image => {
+        return image.title.toLowerCase().includes(this.searchbox.toLowerCase());
+      } )
     }
   }
 }
@@ -50,21 +63,31 @@ export default {
     flex-wrap: wrap;
   }
 
+  .search-bar {
+    display: flex;
+  }
+
   .search-bar input {
     border: 1px solid #cbcbcb;
     background-color: #f9f5f5;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     padding: 5px 10px;
     width: 380px;
   }
 
-  .search-bar button {
+  .search-bar .icon-container {
+    display: flex;
+    align-items: center;
     background-color: #187a7e;
     padding: 6px 10px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    color: white;
+    width: 50px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  .search-icon {
+    fill: white;
   }
 
 </style>
