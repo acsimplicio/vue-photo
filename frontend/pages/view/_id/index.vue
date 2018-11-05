@@ -1,10 +1,11 @@
 <template>
-  <h1>mANO A FITA É O SEGUINTE: EU TENHP UM NAMORADO LINDO</h1>
+  <h1>Aqui vai ser a página de visualização</h1>
 </template>
 
 <script>
 
 export default {
+  layout: 'single-image',
   data () {
     return {}
   }

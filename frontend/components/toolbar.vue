@@ -27,7 +27,7 @@
 	.main-header {
 		background-color: #39c2c7;
 		padding: 0 46px;
-		height: 55px;
+		height: 60px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
