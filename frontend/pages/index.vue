@@ -23,13 +23,13 @@ export default {
       images: [{
         title: 'Iguana',
         image: 'https://meusanimais.com.br/wp-content/uploads/2018/01/iguana-como-animal-de-estima%C3%A7%C3%A3o.jpg',
-        description: 'Iguana fofinha que sobre na arvore e fala pras amiga que tem um galho.',
+        description: 'Iguana fofinha que é verde e bonitinha demais.',
         id: 1,
         favorite: false
       }, {
         title: 'Gato',
         image: 'http://blogs.correiobraziliense.com.br/maisbichos/wp-content/uploads/sites/7/2018/01/gato-1024x576.jpg',
-        description:'Gato fedido porem é fofinho olha a linguinha desse arrombadinho',
+        description:'Gato fofinho, muito bonitinho, lindo igual um leãozinho',
         id: 2,
         favorite: false
       }]
