@@ -1,10 +1,6 @@
 <template>
   <v-app>
     <toolbar :state="layout"/>
-    <sidenav-right :state="layout"/>
-    <sidenav-left :state="layout"/>
-    <sidenav-left-temp :state="layout"/>
-    <sidenav-right-temp :state="layout"/>
     <v-content>
       <v-container fluid>
         <nuxt></nuxt>

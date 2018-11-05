@@ -1,76 +1,63 @@
 <template>
-  <v-toolbar color="blue-grey" dark fixed app clipped-right>
-    <v-toolbar-side-icon @click.stop="state.drawer = !state.drawer"></v-toolbar-side-icon>
-    <v-toolbar-title>Toolbar</v-toolbar-title>
-    <v-spacer></v-spacer>
-    <v-btn v-if="!logged_user" flat dark ripple class="ma-0 ml-5"  @click="open_login_dialog($event)">Login</v-btn>
-    <v-menu v-if="logged_user" offset-y>
-      <v-btn icon slot="activator" class="ma-0 ml-5">
-        <v-avatar size="36px">
-          <img src="https://graph.facebook.com/4/picture?width=300&height=300">
-        </v-avatar>
-      </v-btn>
-      <v-card class="no-padding">
-        <v-list two-line>
-          <v-list-tile avatar>
-            <v-list-tile-avatar>
-              <v-avatar>
-                <img src="https://graph.facebook.com/4/picture?width=300&height=300">
-              </v-avatar>
-            </v-list-tile-avatar>
-            <v-list-tile-content>
-              <v-list-tile-title>{{logged_user.first_name}} {{logged_user.last_name}}</v-list-tile-title>
-              <v-list-tile-sub-title>{{logged_user.email}}</v-list-tile-sub-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
-        <v-divider></v-divider>
-        <v-list>
-          <v-list-tile @click="switchMode()">
-            <v-list-tile-content>
-              <v-list-tile-title>Staff mode</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-          <v-list-tile @click="logout()">
-            <v-list-tile-content>
-              <v-list-tile-title>Log out</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
-      </v-card>
-    </v-menu>
-    <v-toolbar-side-icon @click.stop="state.drawerRight = !state.drawerRight"></v-toolbar-side-icon>
-    <login-dialog ref="login_dialog"/>
-  </v-toolbar>
+	<header class="main-header">
+		<div class='logo-container'>
+			<svg class="cam-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+				<circle cx="12" cy="12" r="3.2"/>
+				<path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+				<path d="M0 0h24v24H0z" fill="none"/>
+			</svg>
+			<span>Vue Photo</span>
+		</div>
+		<button>
+			<span>Adicionar foto</span>
+			<svg class="add-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+				<path fill="none" d="M0 0h24v24H0V0z"/>
+				<path d="M18 13h-5v5c0 .55-.45 1-1 1s-1-.45-1-1v-5H6c-.55 0-1-.45-1-1s.45-1 1-1h5V6c0-.55.45-1 1-1s1 .45 1 1v5h5c.55 0 1 .45 1 1s-.45 1-1 1z"/>
+			</svg>
+		</button>
+	</header>
 </template>
 
 <script>
-  import Vuex from 'vuex'
-  import loginDialog from '~/components/login-dialog.vue'
-  import Snacks from '~/helpers/Snacks.js'
-  import AppApi from '~apijs'
   export default {
-    components: {
-      loginDialog
-    },
-    computed: Object.assign(
-      {},
-      Vuex.mapGetters([
-        'logged_user'
-      ])
-    ),
-    props: ['state'],
-    methods: {
-      open_login_dialog (evt) {
-        this.$refs.login_dialog.open();
-        evt.stopPropagation();
-      },
-      logout(){
-        AppApi.logout().then(()=>{
-          this.$store.commit('SET_LOGGED_USER', null);
-          Snacks.show(this.$store, {text: 'Até logo!'})
-        });
-      }
-    }
   }
 </script>
+
+<style scoped>
+	.main-header {
+		background-color: #39c2c7;
+		padding: 0 46px;
+		height: 55px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.main-header button {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 135px;
+		height: 30px;
+		background-color: #187a7e;
+		color: white;
+		padding: 5px 10px;
+		border-radius: 3px;
+	}
+
+	.logo-container {
+		display: flex;
+		align-items: center;
+		font-size: 18px;
+	}
+
+	.logo-container .cam-icon {
+		margin-right: 10px;
+		fill: #187a7e;
+	}
+
+	.add-icon {
+		fill: white;
+	}
+
+</style>
