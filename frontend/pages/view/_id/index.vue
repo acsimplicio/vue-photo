@@ -1,11 +1,16 @@
 <template>
-  <h1>página de view  da image de id {{id}}</h1>
+  <singleviewer :id="id"></singleviewer>
 </template>
 
 <script>
 
+import singleviewer from '~/components/singleviewer.vue';
+
 export default {
   layout: 'single-image',
+  components : {
+    singleviewer
+  },
   asyncData (context) {
     return {
       id: context.params.id

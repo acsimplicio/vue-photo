@@ -10,7 +10,7 @@
         <input type="text" placeholder="Pesquise!" v-model="searchbox">
       </div>
       <div class='images-container'>
-          <image-card :image='image' v-for="image in images" :key="image"></image-card>
+          <image-card :image='image' v-for="image in filteredImages" :key="image"></image-card>
       </div>
     </div>
 </template>
@@ -36,13 +36,13 @@ export default {
       this.images = result.data
     })
   },
-  // computed: {
-  //   filteredImages() {
-  //     return this.images.filter( image => {
-  //       return image.title.toLowerCase().includes(this.searchbox.toLowerCase());
-  //     } )
-  //   }
-  // }
+  computed: {
+    filteredImages() {
+      return this.images.filter( image => {
+        return image.title.toLowerCase().includes(this.searchbox.toLowerCase());
+      } )
+    }
+  }
 }
 </script>
 
