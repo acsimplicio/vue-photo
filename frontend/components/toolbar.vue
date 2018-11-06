@@ -10,7 +10,7 @@
 				<span>Vue Photo</span>
 			</div>
 		</router-link>
-		<router-link class='link' :to="{ name: 'edit-id'}">
+		<router-link class='link' :to="{ name: 'add'}">
 			<button>
 				<span>Adicionar foto</span>
 				<svg class="add-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
@@ -57,7 +57,7 @@
 		display: flex;
 		align-items: center;
 		font-size: 18px;
-		color: black;
+		color: #187a7e;
 	}
 
 	.logo-container .cam-icon {
