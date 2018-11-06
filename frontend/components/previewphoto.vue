@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class='preview-photo-container'>
         <div class='image-card'>
             <div class='image-card-img' :style="{ 'background-image': 'url(' + image + ')'  }"></div>
             <h3 class='image-card-title'>{{ title }}</h3>
@@ -38,11 +38,26 @@ export default {
 </script>
 
 <style>
+    .preview-photo-container {
+        display: flex;
+        justify-content: space-around;
+        align-content: flex-start;
+    }
+
     .preview-form {
         display: flex;
         flex-direction: column;
-        max-width: 450px;
+        justify-content: space-between;
+        width: 650px;
+        height: calc(100vh - 380px);
     }
+
+    .preview-form input, .preview-form textarea {
+        border: 1.5px solid #cdcdcd;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
 </style>
 
 
