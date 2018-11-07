@@ -76,7 +76,7 @@ const api = {
                 favorite: false
             }
         }
-        return imageInfo[id]
+        return mockasync (imageInfo[id])
     }
 };
 

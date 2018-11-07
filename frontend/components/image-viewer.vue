@@ -1,10 +1,11 @@
 <template>
-    <img class='image-container' src="https://meusanimais.com.br/wp-content/uploads/2018/01/iguana-como-animal-de-estima%C3%A7%C3%A3o.jpg">
+    <img class='image-container' :src="image.image">
 </template>
 
 <script>
-export default {
-}
+    export default {
+        props: ["image"]
+    }
 </script>
 
 <style>

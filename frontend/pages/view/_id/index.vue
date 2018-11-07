@@ -1,10 +1,11 @@
 <template>
-  <singleviewer :id="id"></singleviewer>
+  <singleviewer :image="image"></singleviewer>
 </template>
 
 <script>
 
 import singleviewer from '~/components/singleviewer.vue';
+import AppApi from '~apijs';
 
 export default {
   layout: 'single-image',
@@ -12,9 +13,12 @@ export default {
     singleviewer
   },
   asyncData (context) {
-    return {
-      id: context.params.id
-    }
+    return AppApi.get_image(context.params.id).then(result => {
+      console.log("this result", result)
+      return {
+        image: result.data
+      }          
+    });
   },
   data () {
     return {}

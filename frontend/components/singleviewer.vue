@@ -1,7 +1,7 @@
 <template>
   <div class='viewer-container'>
-    <image-viewer></image-viewer>
-    <info-card></info-card>
+    <image-viewer :image="image"></image-viewer>
+    <info-card :image="image"></info-card>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
         'image-viewer': imageViewer,
         'info-card': infoCard
     },
-    props: ['id'],
+    props: ['image'],
     data () {
         return {}
     }
