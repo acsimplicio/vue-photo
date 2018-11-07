@@ -6,23 +6,15 @@
             <path d="M0 0h24v24H0z" fill="none"/>
           </svg>
           </div>
-        <input type="text" placeholder="Pesquise!" v-model="searchbox">
+        <input type="text" :value="value" @input="$emit('input', $event.target.value)" placeholder="Pesquise!">
       </div>
 </template>
 
 <script>
 export default {
-    props: ['images'],
+    props: ['value'],
     data () {
         return {
-            searchbox: ''
-        }
-    },
-    computed: {
-        filteredImages() {
-        return this.images.filter( image => {
-            return image.title.toLowerCase().includes(this.searchbox.toLowerCase());
-        } )
         }
     }
 }

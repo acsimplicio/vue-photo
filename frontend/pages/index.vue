@@ -1,88 +1,21 @@
 <template>
-    <div class='main-content'>
-      <div class='search-bar'>
-        <div class='icon-container'>
-          <svg class='search-icon' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-            <path d="M0 0h24v24H0z" fill="none"/>
-          </svg>
-          </div>
-        <input type="text" placeholder="Pesquise!" v-model="searchbox">
-      </div>
-      <div class='images-container'>
-          <image-card :image='image' v-for="image in filteredImages" :key="image"></image-card>
-      </div>
-    </div>
+    <home/>
 </template>
 
 <script>
 
-import imageCard from '~/components/image-card.vue';
-import AppApi from '~apijs';
+import home from '~/components/home.vue';
 
 export default {
   components: {
-    'image-card' : imageCard
+    home
   },
   data () {
-    return {
-      searchbox: '',
-      images: []
-    }
-  },
-  mounted () {
-    AppApi.list_images().then(result => {
-      console.log('result: ', result)
-      this.images = result.data
-    })
-  },
-  computed: {
-    filteredImages() {
-      return this.images.filter( image => {
-        return image.title.toLowerCase().includes(this.searchbox.toLowerCase());
-      } )
-    }
+    return { }
   }
 }
 </script>
 
 <style>
-  .main-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .images-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .search-bar {
-    display: flex;
-  }
-
-  .search-bar input {
-    border: 1px solid #cbcbcb;
-    background-color: #f9f5f5;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    padding: 5px 10px;
-    width: 380px;
-  }
-
-  .search-bar .icon-container {
-    display: flex;
-    align-items: center;
-    background-color: #187a7e;
-    padding: 6px 10px;
-    width: 50px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-  }
-
-  .search-icon {
-    fill: white;
-  }
 
 </style>
