@@ -64,6 +64,7 @@ export default {
 
     .image-card-title {
         text-align: center;
+        word-wrap: break-word;
     }
 
     .image-card-info {
@@ -78,6 +79,7 @@ export default {
 
     .image-card-description {
         max-width: 70%;
+        word-wrap: break-word;
     }
 
     .unnactive {

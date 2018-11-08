@@ -67,12 +67,14 @@ const api = {
                 title: 'Iguana',
                 image: 'https://meusanimais.com.br/wp-content/uploads/2018/01/iguana-como-animal-de-estima%C3%A7%C3%A3o.jpg',
                 description: 'Iguana fofinha que é verde e bonitinha demais.',
+                id: 1,
                 favorite: false       
             },
             2 : {
                 title: 'Gato',
                 image: 'http://blogs.correiobraziliense.com.br/maisbichos/wp-content/uploads/sites/7/2018/01/gato-1024x576.jpg',
                 description:'Gato fofinho, muito bonitinho, lindo igual um leãozinho',
+                id: 2,
                 favorite: false
             }
         }

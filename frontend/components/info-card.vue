@@ -20,7 +20,7 @@
                         <path d="M0 0h24v24H0z" fill="none"/>
                     </svg>
                 </button>
-                <router-link class='link' :to="{ name: 'edit-id'}">
+                <router-link class='link' :to="{ name: 'edit-id', params: { id: image.id}}">
                     <button class='edit-button'>
                             <span>Editar</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
@@ -86,6 +86,7 @@ export default {
     .info-card-buttons {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 
     .info-card-buttons button {

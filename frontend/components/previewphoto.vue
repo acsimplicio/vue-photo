@@ -7,7 +7,7 @@
             <label>Descrição:</label>
             <custom-textarea v-model='description'/>
             <label>URL da Imagem:</label>
-            <custom-input v-model='image'/>
+            <custom-input v-model='url'/>
         </form>
     </div>
 </template>
@@ -19,6 +19,7 @@ import customInput from '~/components/custom-input.vue';
 import customTextarea from '~/components/custom-textarea.vue';
 
 export default {
+    props: ['image'],
     components: {
         'preview-card': previewCard,
         'custom-input': customInput,
@@ -26,7 +27,7 @@ export default {
     },
     data () {
         return {
-            image: '',
+            url: '',
             title: '',
             description: ''
         }
@@ -40,6 +41,7 @@ export default {
         display: flex;
         justify-content: space-around;
         align-content: flex-start;
+        flex-wrap: wrap;
     }
 
     .preview-form button {
