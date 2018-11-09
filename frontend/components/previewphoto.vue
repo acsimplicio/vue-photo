@@ -1,14 +1,17 @@
 <template>
     <div class='preview-photo-container'>
-        <preview-card :image='image' :title='title' :description='description' />
-        <form class='preview-form'>
-            <label>Título:</label>
-            <custom-input v-model='title'/>
-            <label>Descrição:</label>
-            <custom-textarea v-model='description'/>
-            <label>URL da Imagem:</label>
-            <custom-input v-model='url'/>
-        </form>
+        <preview-card :image='url' :title='title' :description='description' />
+        <div class='form-container'>
+            <form class='preview-form'>
+                <label>Título:</label>
+                <custom-input v-model='title'/>
+                <label>Descrição:</label>
+                <custom-textarea v-model='description'/>
+                <label>URL da Imagem:</label>
+                <custom-input v-model='url'/>
+            </form>
+            <button @click="addNewImage(title, description, url)">Salvar</button>
+        </div>
     </div>
 </template>
 
@@ -17,6 +20,7 @@
 import previewCard from '~/components/preview-card.vue';
 import customInput from '~/components/custom-input.vue';
 import customTextarea from '~/components/custom-textarea.vue';
+import AppApi from '~apijs';
 
 export default {
     props: ['image'],
@@ -31,6 +35,11 @@ export default {
             title: '',
             description: ''
         }
+    },
+    methods: {
+        addNewImage(title, description, url) {
+            return AppApi.set_image(title, description, url);
+        }
     }
 }
 </script>
@@ -44,12 +53,19 @@ export default {
         flex-wrap: wrap;
     }
 
-    .preview-form button {
+    .form-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    
+    .form-container button {
         width: 150px;
         background-color: #187A7E;
         color: white;
         padding: 5px 10px;
         border-radius: 3px;
+        margin-top: 20px;
         align-self: flex-end;
     }
 

@@ -1,6 +1,36 @@
 import Vue from 'vue'
 
 var logged_user = null;
+var imageList = [{
+    title: 'Iguana',
+    image: 'https://meusanimais.com.br/wp-content/uploads/2018/01/iguana-como-animal-de-estima%C3%A7%C3%A3o.jpg',
+    description: 'Iguana fofinha que é verde e bonitinha demais.',
+    id: 1,
+    favorite: false
+  }, {
+    title: 'Gato',
+    image: 'http://blogs.correiobraziliense.com.br/maisbichos/wp-content/uploads/sites/7/2018/01/gato-1024x576.jpg',
+    description:'Gato fofinho, muito bonitinho, lindo igual um leãozinho',
+    id: 2,
+    favorite: false
+}];
+
+var imageGetter = {
+    1: {
+        title: 'Iguana',
+        image: 'https://meusanimais.com.br/wp-content/uploads/2018/01/iguana-como-animal-de-estima%C3%A7%C3%A3o.jpg',
+        description: 'Iguana fofinha que é verde e bonitinha demais.',
+        id: 1,
+        favorite: false       
+    },
+    2 : {
+        title: 'Gato',
+        image: 'http://blogs.correiobraziliense.com.br/maisbichos/wp-content/uploads/sites/7/2018/01/gato-1024x576.jpg',
+        description:'Gato fofinho, muito bonitinho, lindo igual um leãozinho',
+        id: 2,
+        favorite: false
+    }
+};
 
 function mockasync (data) {
   return new Promise((resolve, reject) => {
@@ -47,38 +77,34 @@ const api = {
         });
     }, 
     list_images() {
-        return mockasync ([{
-                title: 'Iguana',
-                image: 'https://meusanimais.com.br/wp-content/uploads/2018/01/iguana-como-animal-de-estima%C3%A7%C3%A3o.jpg',
-                description: 'Iguana fofinha que é verde e bonitinha demais.',
-                id: 1,
-                favorite: false
-              }, {
-                title: 'Gato',
-                image: 'http://blogs.correiobraziliense.com.br/maisbichos/wp-content/uploads/sites/7/2018/01/gato-1024x576.jpg',
-                description:'Gato fofinho, muito bonitinho, lindo igual um leãozinho',
-                id: 2,
-                favorite: false
-            }])
+        return mockasync (imageList)
     },
     get_image(id) {
-        const imageInfo = {
-            1: {
-                title: 'Iguana',
-                image: 'https://meusanimais.com.br/wp-content/uploads/2018/01/iguana-como-animal-de-estima%C3%A7%C3%A3o.jpg',
-                description: 'Iguana fofinha que é verde e bonitinha demais.',
-                id: 1,
-                favorite: false       
-            },
-            2 : {
-                title: 'Gato',
-                image: 'http://blogs.correiobraziliense.com.br/maisbichos/wp-content/uploads/sites/7/2018/01/gato-1024x576.jpg',
-                description:'Gato fofinho, muito bonitinho, lindo igual um leãozinho',
-                id: 2,
-                favorite: false
-            }
-        }
-        return mockasync (imageInfo[id])
+        return mockasync (imageGetter[id])
+    },
+    set_image(title, description, url) {
+
+        let idNewImage = imageList.length + 1;
+
+        imageList.push({
+            title: title,
+            image: url,
+            description: description,
+            id: idNewImage,
+            favorite: false
+        });
+
+        imageGetter[idNewImage] = {
+            title: title,
+            image: url,
+            description: description,
+            id: idNewImage,
+            favorite: false
+        };
+
+        console.log('foi!')
+
+        return mockasync({});
     }
 };
 

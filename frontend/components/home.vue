@@ -2,7 +2,7 @@
     <div class='main-content'>
       <searchbox v-model='searchbox'/>
       <div class='images-container'>
-          <image-card :image='image' v-for="image in filteredImages" :key="image"></image-card>
+          <image-card :image='image' v-for="image in filteredImages" :key="image.id"></image-card>
       </div>
     </div>
 </template>
@@ -50,6 +50,7 @@ export default {
   .images-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   }
 </style>
 
